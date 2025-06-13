@@ -18,7 +18,7 @@ Une application de gestion de tâches moderne et intuitive, construite avec Ruby
 - Ruby 3.3.5
 - PostgreSQL
 - Rails 8.0.2
-- Node.js (pour les assets)
+<!-- - Node.js (pour les assets) -->
 
 ## Installation
 
@@ -51,7 +51,7 @@ L'application sera accessible à l'adresse `http://localhost:3000`
 
 > Note : Les seeds incluent des exemples de listes et de tâches pour vous aider à démarrer. Vous pouvez les modifier dans `db/seeds.rb` selon vos besoins.
 
-## Développement
+<!-- ## Développement
 
 ### Tests
 
@@ -75,7 +75,7 @@ Des analyses de sécurité sont effectuées avec Brakeman :
 
 ```bash
 brakeman
-```
+``` -->
 
 ## Déploiement
 
