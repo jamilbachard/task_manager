@@ -1,0 +1,30 @@
+<%= form_with(model: list, class: "space-y-4") do |form| %>
+  <% if list.errors.any? %>
+    <div class="bg-red-50 p-4 rounded-lg">
+      <h2 class="text-red-800 font-medium mb-2">
+        <%= pluralize(list.errors.count, "error") %> prohibited this list from being saved:
+      </h2>
+      <ul class="list-disc list-inside text-red-700">
+        <% list.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form_label form, :title %>
+    <%= form.text_field :title, class: input_classes(list, :title) %>
+    <%= input_error_message(list, :title) %>
+  </div>
+
+  <div>
+    <%= form_label form, :description %>
+    <%= form.text_area :description, rows: 3, class: input_classes(list, :description) %>
+    <%= input_error_message(list, :description) %>
+  </div>
+
+  <div>
+    <%= form_submit form %>
+  </div>
+<% end %> 

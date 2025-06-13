@@ -49,6 +49,10 @@ GEM
       globalid (>= 0.3.6)
     activemodel (8.0.2)
       activesupport (= 8.0.2)
+    activemodel-serializers-xml (1.0.3)
+      activemodel (>= 5.0.0.a)
+      activesupport (>= 5.0.0.a)
+      builder (~> 3.1)
     activerecord (8.0.2)
       activemodel (= 8.0.2)
       activesupport (= 8.0.2)
@@ -104,6 +108,13 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     dotenv (3.1.8)
+    draper (4.0.4)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
+      activemodel-serializers-xml (>= 1.0)
+      activesupport (>= 5.0)
+      request_store (>= 1.0)
+      ruby2_keywords
     drb (2.2.3)
     ed25519 (1.4.0)
     erb (5.0.1)
@@ -112,6 +123,8 @@ GEM
       tzinfo
     faker (3.5.1)
       i18n (>= 1.8.11, < 2)
+    friendly_id (5.5.1)
+      activerecord (>= 4.0.0)
     fugit (1.11.1)
       et-orbi (~> 1, >= 1.2.11)
       raabro (~> 1.4)
@@ -191,6 +204,7 @@ GEM
     nokogiri (1.18.8-x86_64-linux-musl)
       racc (~> 1.4)
     ostruct (0.6.1)
+    pagy (9.3.4)
     parallel (1.27.0)
     parser (3.3.8.0)
       ast (~> 2.4.1)
@@ -258,6 +272,8 @@ GEM
     regexp_parser (2.10.0)
     reline (0.6.1)
       io-console (~> 0.5)
+    request_store (1.7.0)
+      rack (>= 1.4)
     rexml (3.4.1)
     rubocop (1.76.1)
       json (~> 2.3)
@@ -288,6 +304,7 @@ GEM
       rubocop-performance (>= 1.24)
       rubocop-rails (>= 2.30)
     ruby-progressbar (1.13.0)
+    ruby2_keywords (0.0.5)
     rubyzip (2.4.1)
     securerandom (0.4.1)
     selenium-webdriver (4.33.0)
@@ -380,10 +397,13 @@ DEPENDENCIES
   brakeman
   capybara
   debug
+  draper
   faker
+  friendly_id (~> 5.5.0)
   importmap-rails
   jbuilder
   kamal
+  pagy
   pg (~> 1.1)
   propshaft
   puma (>= 5.0)

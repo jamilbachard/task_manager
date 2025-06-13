@@ -1,0 +1,10 @@
+<% if flash.any? %>
+  <div class="fixed top-4 right-0 z-50" data-controller="flash">
+    <% flash.each do |type, message| %>
+      <div class="p-4 rounded-l-lg shadow-lg mb-2 transform transition-all duration-500 mr-0 <%= type == 'notice' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700' %>"
+           data-flash-target="message">
+        <%= message %>
+      </div>
+    <% end %>
+  </div>
+<% end %> 

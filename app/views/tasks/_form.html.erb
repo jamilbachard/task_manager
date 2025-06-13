@@ -1,0 +1,24 @@
+<%= form_with(model: [@list, task], class: "space-y-4") do |form| %>
+  <div>
+    <%= form_label form, :title %>
+    <%= form.text_field :title, class: input_classes(task, :title) %>
+    <%= input_error_message(task, :title) %>
+  </div>
+
+  <div>
+    <%= form_label form, :description %>
+    <%= form.text_area :description, rows: 3, class: input_classes(task, :description) %>
+    <%= input_error_message(task, :description) %>
+  </div>
+
+  <div class="flex items-center">
+    <%= form.check_box :completed, 
+        class: "h-4 w-4 rounded #{task.errors[:completed].any? ? 'border-red-300 text-red-600 focus:ring-red-500' : 'border-gray-300 text-indigo-600 focus:ring-indigo-500'}" %>
+    <%= form.label :completed, class: "ml-2 block text-sm text-gray-700" %>
+    <%= input_error_message(task, :completed) %>
+  </div>
+
+  <div>
+    <%= form_submit form %>
+  </div>
+<% end %> 
