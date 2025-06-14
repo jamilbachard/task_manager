@@ -41,9 +41,12 @@
     </div>
 
     <div class="mt-4 flex space-x-4">
-      <%= link_to "All", list_path(@list), class: "px-3 py-1 rounded-full text-sm #{params[:filter].nil? ? 'bg-indigo-100 text-indigo-800' : 'text-gray-500 hover:text-gray-700'}" %>
-      <%= link_to "Completed", list_path(@list, filter: "completed"), class: "px-3 py-1 rounded-full text-sm #{params[:filter] == 'completed' ? 'bg-indigo-100 text-indigo-800' : 'text-gray-500 hover:text-gray-700'}" %>
-      <%= link_to "Incomplete", list_path(@list, filter: "incomplete"), class: "px-3 py-1 rounded-full text-sm #{params[:filter] == 'incomplete' ? 'bg-indigo-100 text-indigo-800' : 'text-gray-500 hover:text-gray-700'}" %>
+      <%= link_to "All", list_path(@list), class: "px-3 py-1 rounded-full text-sm #{params[:filter].nil? && params[:priority].nil? ? 'bg-indigo-100 text-indigo-800' : 'text-gray-500 hover:text-gray-700'}" %>
+      <%= link_to "Completed", list_path(@list, filter: "completed", priority: params[:priority]), class: "px-3 py-1 rounded-full text-sm #{params[:filter] == 'completed' ? 'bg-indigo-100 text-indigo-800' : 'text-gray-500 hover:text-gray-700'}" %>
+      <%= link_to "Incomplete", list_path(@list, filter: "incomplete", priority: params[:priority]), class: "px-3 py-1 rounded-full text-sm #{params[:filter] == 'incomplete' ? 'bg-indigo-100 text-indigo-800' : 'text-gray-500 hover:text-gray-700'}" %>
+      <%= link_to "High", list_path(@list, filter: params[:filter], priority: "high"), class: "px-3 py-1 rounded-full text-sm #{params[:priority] == 'high' ? 'bg-red-100 text-red-800' : 'text-gray-500 hover:text-gray-700'}" %>
+      <%= link_to "Medium", list_path(@list, filter: params[:filter], priority: "medium"), class: "px-3 py-1 rounded-full text-sm #{params[:priority] == 'medium' ? 'bg-yellow-100 text-yellow-800' : 'text-gray-500 hover:text-gray-700'}" %>
+      <%= link_to "Low", list_path(@list, filter: params[:filter], priority: "low"), class: "px-3 py-1 rounded-full text-sm #{params[:priority] == 'low' ? 'bg-green-100 text-green-800' : 'text-gray-500 hover:text-gray-700'}" %>
     </div>
 
     <div class="mt-4 bg-white shadow overflow-hidden sm:rounded-md">
@@ -64,6 +67,9 @@
                 <div>
                   <p class="text-sm font-medium <%= task.completed? ? 'text-gray-500 line-through' : 'text-gray-900' %>">
                     <%= task.title %>
+                    <span class="ml-2 px-2 py-0.5 rounded-full text-xs font-semibold <%= priority_style(task.priority) %>">
+                      <%= task.priority.titleize %>
+                    </span>
                   </p>
                   <% if task.description.present? %>
                     <p class="text-sm text-gray-500"><%= task.description %></p>

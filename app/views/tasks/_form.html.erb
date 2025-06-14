@@ -19,6 +19,12 @@
   </div>
 
   <div>
+    <%= form_label form, :priority %>
+    <%= form.select :priority, Task.priorities.keys.map { |k| [k.titleize, k] }, {}, class: input_classes(task, :priority) %>
+    <%= input_error_message(task, :priority) %>
+  </div>
+
+  <div>
     <%= form_submit form %>
   </div>
 <% end %> 

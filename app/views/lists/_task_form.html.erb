@@ -11,6 +11,12 @@
     <%= input_error_message(task, :description) %>
   </div>
 
+  <div>
+    <%= form_label form, :priority %>
+    <%= form.select :priority, Task.priorities.keys.map { |k| [k.titleize, k] }, {}, class: input_classes(task, :priority) %>
+    <%= input_error_message(task, :priority) %>
+  </div>
+
   <div class="flex justify-end">
     <%= form_submit form, "Add Task" %>
   </div>

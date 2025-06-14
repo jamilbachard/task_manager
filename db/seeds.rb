@@ -32,7 +32,8 @@ puts "Creating lists and tasks..."
 100.times do
   list = List.create!(
     title: Faker::Lorem.words(number: 2).join(" ").titleize,
-    description: Faker::Lorem.sentence
+    description: Faker::Lorem.sentence,
+    user: user
   )
 
   rand(3..7).times do

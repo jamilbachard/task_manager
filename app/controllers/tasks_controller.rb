@@ -38,16 +38,7 @@ class TasksController < ApplicationController
   end
 
   def toggle_complete
-    p "params -----------------------------"
-    p params
-    p "params --------------------------"
-    p "toggle_complete"
-    p @task.completed
-    p @task.completed?
     @task.update(completed: !@task.completed)
-    p "toggle_complete after update"
-    p @task.completed
-    p @task.completed?
     redirect_to @list, notice: "Task marked as #{@task.completed? ? 'completed' : 'incomplete'}."
   end
 
@@ -62,6 +53,6 @@ class TasksController < ApplicationController
   end
 
   def task_params
-    params.require(:task).permit(:title, :description, :completed)
+    params.require(:task).permit(:title, :description, :completed, :priority)
   end
 end

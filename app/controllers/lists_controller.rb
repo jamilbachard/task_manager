@@ -11,6 +11,7 @@ class ListsController < ApplicationController
     @tasks = @list.tasks.ordered
     @tasks = @tasks.completed if params[:filter] == "completed"
     @tasks = @tasks.incomplete if params[:filter] == "incomplete"
+    @tasks = @tasks.by_priority(params[:priority]) if params[:priority].present?
   end
 
   def new
