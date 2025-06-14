@@ -1,8 +1,9 @@
 class ListsController < ApplicationController
+  layout "slim"
   before_action :set_list, only: [ :show, :edit, :update, :destroy ]
 
   def index
-    lists = List.includes(:tasks).all
+    lists = current_user.lists.includes(:tasks)
     @pagy, @lists = pagy(lists, limit: 25)
     @lists = @lists.decorate
   end
@@ -21,7 +22,7 @@ class ListsController < ApplicationController
   end
 
   def create
-    @list = List.new(list_params)
+    @list = current_user.lists.build(list_params)
 
     if @list.save
       redirect_to @list, notice: "List was successfully created."
@@ -50,7 +51,7 @@ class ListsController < ApplicationController
   private
 
   def set_list
-    @list = List.friendly.find(params[:id]).decorate
+    @list = current_user.lists.friendly.find(params[:id]).decorate
   end
 
   def list_params

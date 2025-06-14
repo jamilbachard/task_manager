@@ -54,7 +54,7 @@ class TasksController < ApplicationController
   private
 
   def set_list
-    @list = List.friendly.find(params[:list_id])
+    @list = current_user.lists.friendly.find(params[:list_id])
   end
 
   def set_task

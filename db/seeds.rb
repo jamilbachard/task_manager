@@ -11,8 +11,21 @@
 require 'faker'
 
 puts "Cleaning database..."
+User.destroy_all
 Task.destroy_all
 List.destroy_all
+
+puts "Creating user..."
+user = User.create!(
+  email_address: "admin@prepmyfuture.com",
+  password: "password",
+  password_confirmation: "password",
+  first_name: "Test",
+  last_name: "User",
+  username: "testuser",
+  phone_number: "1234567890"
+)
+puts "Created user with email: #{user.email_address}"
 
 puts "Creating lists and tasks..."
 
