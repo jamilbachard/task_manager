@@ -46,6 +46,8 @@ gem "friendly_id", "~> 5.5.0"
 gem "draper"
 gem "pagy"
 
+# Email preview in the browser for development
+gem "letter_opener_web", group: :development
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
