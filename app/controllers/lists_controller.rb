@@ -1,5 +1,4 @@
 class ListsController < ApplicationController
-  layout "slim"
   before_action :set_list, only: [ :show, :edit, :update, :destroy ]
 
   def index
