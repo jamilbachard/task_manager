@@ -3,9 +3,10 @@ class List < ApplicationRecord
   friendly_id :title, use: :slugged
 
   has_many :tasks, dependent: :destroy
+  belongs_to :user
 
   validates :title, presence: true, length: { minimum: 3, maximum: 100 },
-                   uniqueness: { case_sensitive: false }
+                   uniqueness: { case_sensitive: false, scope: :user_id }
   validates :description, length: { maximum: 500 }, allow_blank: true
 
   scope :with_incomplete_tasks, -> { joins(:tasks).where(tasks: { completed: false }).distinct }

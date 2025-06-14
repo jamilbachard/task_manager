@@ -13,6 +13,10 @@ class Task < ApplicationRecord
   before_validation :set_position, on: :create
   before_save :normalize_title
 
+  def user_id
+    list.user_id
+  end
+
   private
 
   def set_position
