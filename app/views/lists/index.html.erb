@@ -8,40 +8,51 @@
     </div>
   </div>
 
-  <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-    <% @lists.each do |list| %>
-      <div class="bg-white overflow-hidden shadow rounded-lg">
-        <div class="px-4 py-5 sm:p-6">
-          <div class="flex items-center justify-between">
-            <h3 class="text-lg font-medium text-gray-900">
-              <%= link_to list.title, list_path(list), class: "hover:text-indigo-600" %>
-            </h3>
-            <div class="flex space-x-2">
-              <%= link_to "Edit", edit_list_path(list), class: "text-indigo-600 hover:text-indigo-900" %>
-              <%= button_to "Delete", list_path(list), method: :delete, class: "text-red-600 hover:text-red-900", form: { data: { turbo_confirm: "Are you sure?" } } %>
+  <% if @lists.any? %>
+    <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <% @lists.each do |list| %>
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+          <div class="px-4 py-5 sm:p-6">
+            <div class="flex items-center justify-between">
+              <h3 class="text-lg font-medium text-gray-900">
+                <%= link_to list.title, list_path(list), class: "hover:text-indigo-600" %>
+              </h3>
+              <div class="flex space-x-2">
+                <%= link_to "Edit", edit_list_path(list), class: "text-indigo-600 hover:text-indigo-900" %>
+                <%= button_to "Delete", list_path(list), method: :delete, class: "text-red-600 hover:text-red-900", form: { data: { turbo_confirm: "Are you sure?" } } %>
+              </div>
             </div>
-          </div>
-          
-          <% if list.description.present? %>
-            <p class="mt-1 text-sm text-gray-500"><%= list.description %></p>
-          <% end %>
+            
+            <% if list.description.present? %>
+              <p class="mt-1 text-sm text-gray-500"><%= list.description %></p>
+            <% end %>
 
-          <div class="mt-4">
-            <div class="flex items-center justify-between text-sm">
-              <span class="text-gray-500"><%= list.tasks_summary %></span>
-              <div class="w-24 bg-gray-200 rounded-full h-2.5">
-                <div class="bg-indigo-600 h-2.5 rounded-full" style="width: <%= list.percent_complete %>%"></div>
+            <div class="mt-4">
+              <div class="flex items-center justify-between text-sm">
+                <span class="text-gray-500"><%= list.tasks_summary %></span>
+                <div class="w-24 bg-gray-200 rounded-full h-2.5">
+                  <div class="bg-indigo-600 h-2.5 rounded-full" style="width: <%= list.percent_complete %>%"></div>
+                </div>
               </div>
             </div>
           </div>
         </div>
+      <% end %>
+    </div>
+
+    <% if @pagy.pages > 1 %>
+      <div class="mt-8 flex justify-center">
+        <%== pagy_nav(@pagy) %>
       </div>
     <% end %>
-  </div>
-
-  <% if @pagy.pages > 1 %>
-    <div class="mt-8 flex justify-center">
-      <%== pagy_nav(@pagy) %>
+  <% else %>
+    <div class="mt-8 text-center py-12 bg-white shadow rounded-lg">
+      <%= render "shared/empty_state_icon" %>
+      <h3 class="mt-2 text-sm font-medium text-gray-900">Aucune liste</h3>
+      <p class="mt-1 text-sm text-gray-500">Commencez par créer votre première liste de tâches.</p>
+      <div class="mt-6">
+        <%= link_to "Créer une liste", new_list_path, class: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      </div>
     </div>
   <% end %>
 </div> 

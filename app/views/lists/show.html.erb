@@ -50,40 +50,59 @@
     </div>
 
     <div class="mt-4 bg-white shadow overflow-hidden sm:rounded-md">
-      <ul role="list" class="divide-y divide-gray-200">
-        <% @tasks.each do |task| %>
-          <li class="px-4 py-4 sm:px-6">
-            <div class="flex items-center justify-between">
-              <div class="flex items-center">
-                <%= button_to toggle_complete_list_task_path(@list, task), method: :patch, class: "mr-3" do %>
-                  <div class="h-5 w-5 rounded-full border-2 <%= task.completed? ? 'bg-indigo-600 border-indigo-600' : 'border-gray-300' %> flex items-center justify-center">
-                    <% if task.completed? %>
-                      <svg class="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
+      <% if @tasks.any? %>
+        <ul role="list" class="divide-y divide-gray-200">
+          <% @tasks.each do |task| %>
+            <li class="px-4 py-4 sm:px-6">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center">
+                  <%= button_to toggle_complete_list_task_path(@list, task), method: :patch, class: "mr-3" do %>
+                    <div class="h-5 w-5 rounded-full border-2 <%= task.completed? ? 'bg-indigo-600 border-indigo-600' : 'border-gray-300' %> flex items-center justify-center">
+                      <% if task.completed? %>
+                        <svg class="h-3 w-3 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                      <% end %>
+                    </div>
+                  <% end %>
+                  <div>
+                    <p class="text-sm font-medium <%= task.completed? ? 'text-gray-500 line-through' : 'text-gray-900' %>">
+                      <%= task.title %>
+                      <span class="ml-2 px-2 py-0.5 rounded-full text-xs font-semibold <%= priority_style(task.priority) %>">
+                        <%= task.priority.titleize %>
+                      </span>
+                    </p>
+                    <% if task.description.present? %>
+                      <p class="text-sm text-gray-500"><%= task.description %></p>
                     <% end %>
                   </div>
-                <% end %>
-                <div>
-                  <p class="text-sm font-medium <%= task.completed? ? 'text-gray-500 line-through' : 'text-gray-900' %>">
-                    <%= task.title %>
-                    <span class="ml-2 px-2 py-0.5 rounded-full text-xs font-semibold <%= priority_style(task.priority) %>">
-                      <%= task.priority.titleize %>
-                    </span>
-                  </p>
-                  <% if task.description.present? %>
-                    <p class="text-sm text-gray-500"><%= task.description %></p>
-                  <% end %>
+                </div>
+                <div class="flex space-x-2">
+                  <%= link_to "Edit", edit_list_task_path(@list, task), class: "text-indigo-600 hover:text-indigo-900" %>
+                  <%= button_to "Delete", list_task_path(@list, task), method: :delete, class: "text-red-600 hover:text-red-900", form: { data: { turbo_confirm: "Are you sure?" } } %>
                 </div>
               </div>
-              <div class="flex space-x-2">
-                <%= link_to "Edit", edit_list_task_path(@list, task), class: "text-indigo-600 hover:text-indigo-900" %>
-                <%= button_to "Delete", list_task_path(@list, task), method: :delete, class: "text-red-600 hover:text-red-900", form: { data: { turbo_confirm: "Are you sure?" } } %>
-              </div>
-            </div>
-          </li>
-        <% end %>
-      </ul>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <div class="text-center py-12">
+          <%= render "shared/empty_state_icon" %>
+          <h3 class="mt-2 text-sm font-medium text-gray-900">Aucune tâche</h3>
+          <p class="mt-1 text-sm text-gray-500">
+            <% if params[:filter].present? || params[:priority].present? %>
+              Aucune tâche ne correspond à vos filtres.
+            <% else %>
+              Commencez par ajouter votre première tâche à cette liste.
+            <% end %>
+          </p>
+          <div class="mt-6">
+            <button type="button" data-action="toggle-form#toggle" class="inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+              Ajouter une tâche
+            </button>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div> 
