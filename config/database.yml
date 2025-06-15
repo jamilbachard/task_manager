@@ -79,11 +79,14 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
+  url: <%= ENV['DATABASE_URL'] %>
   primary: &primary_production
     <<: *default
     database: task_manager_production
-    username: task_manager
-    password: <%= ENV["TASK_MANAGER_DATABASE_PASSWORD"] %>
+    username: <%= ENV['POSTGRES_USER'] %>
+    password: <%= ENV['POSTGRES_PASSWORD'] %>
+    host: <%= ENV['POSTGRES_HOST'] %>
+    port: <%= ENV['POSTGRES_PORT'] %>
   cache:
     <<: *primary_production
     database: task_manager_production_cache
