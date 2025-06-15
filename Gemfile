@@ -46,6 +46,9 @@ gem "friendly_id", "~> 5.5.0"
 gem "draper"
 gem "pagy"
 
+# Generate fake data for development and testing
+gem "faker"
+
 # Email preview in the browser for development
 gem "letter_opener_web", group: :development
 
@@ -58,9 +61,6 @@ group :development, :test do
 
   # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
   gem "rubocop-rails-omakase", require: false
-
-  # Generate fake data for development and testing
-  gem "faker"
 end
 
 group :development do
