@@ -82,3 +82,8 @@ production:
   <<: *default
   database: task_manager_production
   url: <%= ENV['DATABASE_URL'] %>
+
+  cable:
+    <<: *default
+    database: task_manager_production_cable
+    url: <%= ENV['DATABASE_URL'] %>
