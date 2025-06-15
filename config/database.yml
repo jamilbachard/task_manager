@@ -83,10 +83,6 @@ production:
   primary: &primary_production
     <<: *default
     database: task_manager_production
-    username: <%= ENV['POSTGRES_USER'] %>
-    password: <%= ENV['POSTGRES_PASSWORD'] %>
-    host: <%= ENV['POSTGRES_HOST'] %>
-    port: <%= ENV['POSTGRES_PORT'] %>
   cache:
     <<: *primary_production
     database: task_manager_production_cache
