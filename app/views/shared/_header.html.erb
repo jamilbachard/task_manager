@@ -5,10 +5,10 @@
     <% end %>
     <div class="flex items-center">
       <% if current_user %>
-        <span class="mr-4">Connecté en tant que : <%= current_user.username %></span>
-        <%= button_to "Se déconnecter", session_path, method: :delete, data: { turbo_confirm: "Êtes-vous sûr de vouloir vous déconnecter ?" }, class: "text-white underline" %>
+        <span class="mr-4">Signed in as: <%= current_user.username %></span>
+        <%= button_to "Sign out", session_path, method: :delete, data: { turbo_confirm: "Are you sure you want to sign out?" }, class: "text-white underline" %>
       <% else %>
-        <span>Non connecté</span>
+        <span>Not signed in</span>
       <% end %>
     </div>
   </div>

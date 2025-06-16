@@ -9,14 +9,14 @@ class SessionsController < ApplicationController
   def create
     if user = User.authenticate_by(params.permit(:email_address, :password))
       start_new_session_for user
-      redirect_to after_authentication_url, notice: "Connexion réussie. Bienvenue #{user.username} !"
+      redirect_to after_authentication_url, notice: "Successfully signed in. Welcome #{user.username}!"
     else
-      redirect_to new_session_path, alert: "Email ou mot de passe incorrect."
+      redirect_to new_session_path, alert: "Invalid email or password."
     end
   end
 
   def destroy
     terminate_session
-    redirect_to new_session_path, notice: "Vous avez été déconnecté avec succès."
+    redirect_to new_session_path, notice: "You have been successfully signed out."
   end
 end

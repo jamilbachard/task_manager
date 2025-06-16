@@ -48,10 +48,10 @@
   <% else %>
     <div class="mt-8 text-center py-12 bg-white shadow rounded-lg">
       <%= render "shared/empty_state_icon" %>
-      <h3 class="mt-2 text-sm font-medium text-gray-900">Aucune liste</h3>
-      <p class="mt-1 text-sm text-gray-500">Commencez par créer votre première liste de tâches.</p>
+      <h3 class="mt-2 text-sm font-medium text-gray-900">No lists</h3>
+      <p class="mt-1 text-sm text-gray-500">Start by creating your first task list.</p>
       <div class="mt-6">
-        <%= link_to "Créer une liste", new_list_path, class: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+        <%= link_to "Create a list", new_list_path, class: "inline-flex items-center px-4 py-2 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
       </div>
     </div>
   <% end %>

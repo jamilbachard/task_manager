@@ -1,61 +1,61 @@
 # Task Manager
 
-Une application de gestion de tâches moderne et intuitive, construite avec Ruby on Rails et Tailwind CSS.
+A modern and intuitive task management application, built with Ruby on Rails and Tailwind CSS.
 
-## Fonctionnalités
+## Features
 
-- Création et gestion de listes de tâches
-- Ajout, modification et suppression de tâches
-- Marquage des tâches comme complétées
-- Filtrage des tâches (toutes, complétées, incomplètes)
-- Interface utilisateur moderne et responsive avec Tailwind CSS
-- Messages flash pour les notifications
-- Pagination des listes
-- URLs conviviales avec Friendly ID
+- Create and manage task lists
+- Add, modify and delete tasks
+- Mark tasks as completed
+- Filter tasks (all, completed, incomplete)
+- Modern and responsive user interface with Tailwind CSS
+- Flash messages for notifications
+- List pagination
+- User-friendly URLs with Friendly ID
 
-## Prérequis
+## Prerequisites
 
 - Ruby 3.3.5
 - PostgreSQL
 - Rails 8.0.2
-<!-- - Node.js (pour les assets) -->
+<!-- - Node.js (for assets) -->
 
 ## Installation
 
-1. Clonez le dépôt :
+1. Clone the repository:
 ```bash
 git clone <repository-url>
 cd task_manager
 ```
 
-2. Installez les dépendances Ruby :
+2. Install Ruby dependencies:
 ```bash
 bundle install
 ```
 
-3. Configurez la base de données :
+3. Set up the database:
 ```bash
 rails db:create
 rails db:migrate
-rails db:seed  # Charge des données de démonstration
+rails db:seed  # Loads demo data
 ```
 
-4. Démarrez le serveur de développement :
+4. Start the development server:
 ```bash
 bin/dev
 ```
 
-Cette commande démarre à la fois le serveur Rails et le processus de compilation des assets Tailwind CSS.
+This command starts both the Rails server and the Tailwind CSS asset compilation process.
 
-L'application sera accessible à l'adresse `http://localhost:3000`
+The application will be available at `http://localhost:3000`
 
-> Note : Les seeds incluent des exemples de listes et de tâches pour vous aider à démarrer. Vous pouvez les modifier dans `db/seeds.rb` selon vos besoins.
+> Note: The seeds include example lists and tasks to help you get started. You can modify them in `db/seeds.rb` according to your needs.
 
-<!-- ## Développement
+<!-- ## Development
 
 ### Tests
 
-L'application utilise RSpec pour les tests. Pour exécuter les tests :
+The application uses RSpec for testing. To run the tests:
 
 ```bash
 rails test
@@ -63,25 +63,25 @@ rails test
 
 ### Linting
 
-Le code est vérifié avec RuboCop pour maintenir un style cohérent :
+Code is checked with RuboCop to maintain consistent style:
 
 ```bash
 rubocop
 ```
 
-### Sécurité
+### Security
 
-Des analyses de sécurité sont effectuées avec Brakeman :
+Security scans are performed with Brakeman:
 
 ```bash
 brakeman
 ``` -->
 
-## Déploiement
+## Deployment
 
-L'application est configurée pour être déployée avec Kamal. Consultez `config/deploy.yml` pour la configuration du déploiement.
+The application is configured to be deployed with Kamal. See `config/deploy.yml` for deployment configuration.
 
-## Technologies utilisées
+## Technologies used
 
 - Ruby on Rails 8.0.2
 - PostgreSQL
@@ -91,8 +91,8 @@ L'application est configurée pour être déployée avec Kamal. Consultez `confi
 - Friendly ID
 - Draper
 - Pagy
-- Kamal pour le déploiement
+- Kamal for deployment
 
-## Licence
+## License
 
-Ce projet est sous licence MIT.
+This project is under MIT license.
